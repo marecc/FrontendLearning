@@ -2,13 +2,16 @@
   <div>
     <div class="boxcontainer1">
       <titleComponent :titleText="titleText"></titleComponent>
-      <boxcomponent
-        v-for="n in 20"
-        :key="n"
-        :boxclass="'box' + n"
-      ></boxcomponent>
+      <div class="selectGroup">
+        <selectComponent
+          :selectorList="selectorList"
+          @commit="commitStyleChange"
+        ></selectComponent>
+      </div>
+      <boxcomponent boxesName="boxes" :styleOption="styleOption"></boxcomponent>
     </div>
     <h1>boxes</h1>
+
     <div class="boxcontainer2">
       <numberedBoxComponent
         :numberText="n"
@@ -24,48 +27,103 @@
 import boxcomponent from "./Components/BoxComponent"; // ../上一级目录下
 import titleComponent from "./Components/titleComponent"; // ./ 当前目录下
 import numberedBoxComponent from "./Components/numberedBoxComponent";
+import selectComponent from "./Components/selectComponent";
 
 export default {
   components: {
     boxcomponent,
     titleComponent,
     numberedBoxComponent,
+    selectComponent,
   },
+  created() {},
+  mounted() {},
+
   data() {
     return {
       titleText: "flex布局",
+      selectorList: [
+        //flex布局设计下拉菜单区域数据
+        {
+          name: "flex-direction", //选项名称
+          valueOfStyleOption: "", //绑定获取选项数据
+          options: ["column-reverse", "column", "row", "row-reverse"], //选项遍历值
+        },
+        {
+          name: "justify-content",
+          valueOfStyleOption: "",
+          options: [
+            "flex-start",
+            "flex-end",
+            "center",
+            "space-around",
+            "space-between",
+            "space-evenly",
+          ],
+        },
+        {
+          name: "align-items",
+          valueOfStyleOption: "",
+          options: ["flex-start", "flex-end", "center", "stretch", "baseline"],
+        },
+      ],
+      styleOption: "", //传递flex样式数据变量到组件
+      numberOfBoxes: Number,
     };
   },
-  methods: {},
+  methods: {
+    commitStyleChange() {
+      //数据发生变化时进行修改的方法
+      this.styleOption =
+        "display: flex; flex-direction:" +
+        this.selectorList[0].valueOfStyleOption +
+        ";justify-content:" +
+        this.selectorList[1].valueOfStyleOption +
+        ";align-items:" +
+        this.selectorList[2].valueOfStyleOption +
+        ";";
+      console.log(this.styleOption);
+    },
+  },
 };
 </script>
 
-<style>
+<style lang=less scoped>
 .titleOfItems {
   text-align: 20px;
 }
 /* 主要是由justify-content\align-items\align-content(wrap)\align-items(单个元素特例)四种 */
 .boxcontainer1 {
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
+}
+.selectGroup {
+  display: flex;
+  justify-content: flex-start;
+}
+.inputOfFlex-wrapBoxes {
+  display: flex;
+  align-items: center;
+  width: 20%;
 }
 .boxcontainer2 {
   background-color: #16a085;
   /* 不设置height由内部元素撑起大小 */
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-wrap: wrap;
   /* align-content只在多行显示为flex-wrap时有效 */
   /* space-aroud两行间距更小,space-between两行间距较大 */
   align-content: space-around;
 }
-.box {
+.boxes {
   height: 100px;
   width: 100px;
   background-color: #1abc9c;
   margin: 20px;
+}
+.box {
+  display: flex;
 }
 /* justify-content针对元素在列上的分布 */
 .box1 {
@@ -97,28 +155,5 @@ export default {
 .box7 {
   display: flex;
   align-items: flex-start;
-}
-.box8 {
-  display: flex;
-  align-items: center;
-}
-.box9 {
-  display: flex;
-  align-items: flex-end;
-}
-.box10 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.box11 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.box12 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
 }
 </style>

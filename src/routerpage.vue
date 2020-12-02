@@ -20,10 +20,11 @@
         <el-menu-item index="/zujian/element">element</el-menu-item>
       </el-submenu>
     </el-menu>
+    <h1 v-show="this.$router.history.current.fullPath == '/'" class="tipTitle">
+      欢迎👏，请在顶部下拉框中选择项目
+    </h1>
     <div class="container">
-      <div>
-        <router-view></router-view>
-      </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -31,42 +32,39 @@
 <script>
 export default {
   data() {
-    return {
-      activeIndex:''
-    };
+    return {};
   },
   methods: {
-    //提交选择事件切换路由
-    printConfigMessage(){
+    printConfigMessage() {
+      //显示全局配置信息
       console.log(process.env);
     },
-    handleSelect(){
+    handleSelect() {
+      //提交选择事件切换路由
       console.log(this.$router.history.current.fullPath);
-    }
+    },
   },
   created() {
-    this.printConfigMessage()
+    this.printConfigMessage();
   },
 };
 </script>
 
-<style>
+<style >
 /* 消除网页顶端及两边的空白条 */
-body{
+body {
   margin: 0px;
   padding: 0px;
   background: #ecf0f1;
 }
-.mainContainer{
-  height: 100%;
-  width: 100%;
+.mainContainer {
   padding-top: 0px;
 }
 .container {
-  height: 100%;
-  width: 100%;
+  padding: 2%;
   display: flex;
-  justify-content: center;
-  
+}
+.tipTitle {
+  text-align: center;
 }
 </style>
