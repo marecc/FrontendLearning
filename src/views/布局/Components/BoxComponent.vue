@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>{{ boxclass }}</h1>
-    <div :class="boxclass" style="display: flex">
+    <h1>{{ boxesName }}</h1>
+    <div :style="styleOption" >
       <div class="red"></div>
       <div class="blue"></div>
       <div class="purple"></div>
@@ -17,7 +17,7 @@ export default {
   data() {
     return {};
   },
-  props: ["boxclass"],
+  props: ["boxesName","styleOption"],
 };
 </script>
 

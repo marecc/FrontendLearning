@@ -22,6 +22,14 @@ module.exports = {
 	// 	build: "vue-cli-service build",
 	// 	test: "vue-cli-service serve --mode test",
 	// },
+	// 用法:vue-cli-service serve [options] [entry]
+	// 选项:
+	//   --open    在服务器启动时打开浏览器
+	//   --copy    在服务器启动时将 URL 复制到剪切版
+	//   --mode    指定环境模式 (默认值：development)
+	//   --host    指定 host (默认值：0.0.0.0)
+	//   --port    指定 port (默认值：8080)
+	//   --https   使用 https (默认值：false)
 	//结束
 	configureWebpack: (config) => {
 		if (process.env.NODE_ENV === "production") {
@@ -48,7 +56,7 @@ module.exports = {
 		// port: 8085, //端口,不设置时端口号时自动设置
 		https: false, //false关闭https，true为开启后本地运行浏览器报不安全链接，仍可使用
 		open: true, //自动打开浏览器
-		proxy: {
+		proxy: {//
 			"/api": {
 				//本地
 				target: "xxx",
