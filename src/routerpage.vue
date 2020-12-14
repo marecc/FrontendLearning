@@ -37,11 +37,11 @@ export default {
   methods: {
     printConfigMessage() {
       //显示全局配置信息
-      console.log(process.env);
+      console.log("process.env",process.env);
     },
     handleSelect() {
       //提交选择事件切换路由
-      console.log(this.$router.history.current.fullPath);
+      console.log("fullPath",this.$router.history.current.fullPath);
     },
   },
   created() {

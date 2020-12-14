@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainContainer">
     <div class="boxcontainer1">
       <titleComponent :titleText="titleText"></titleComponent>
       <div class="selectGroup">
@@ -11,11 +11,14 @@
       <boxcomponent boxesName="boxes" :styleOption="styleOption"></boxcomponent>
     </div>
     <h1>boxes</h1>
-
+    <div>
+      <p>方块个数:</p>
+      <el-input v-model="numberOfBoxes" placeholder="请输入方块个数"></el-input>
+    </div>
     <div class="boxcontainer2">
       <numberedBoxComponent
         :numberText="n"
-        v-for="n in 15"
+        v-for="n in Number(number)"
         class="box"
         :key="n"
       ></numberedBoxComponent>
@@ -38,10 +41,19 @@ export default {
   },
   created() {},
   mounted() {},
-
+  computed: {
+    number() {
+      if (this.numberOfBoxes > 30) {
+        this.$message({message:'最大值为30！',type:'warning'});
+        this.numberOfBoxes = 30;
+      }
+      return this.numberOfBoxes;
+    },
+  },
   data() {
     return {
       titleText: "flex布局",
+      numberOfBoxes: 15,
       selectorList: [
         //flex布局设计下拉菜单区域数据
         {
@@ -68,7 +80,6 @@ export default {
         },
       ],
       styleOption: "", //传递flex样式数据变量到组件
-      numberOfBoxes: Number,
     };
   },
   methods: {
@@ -89,6 +100,9 @@ export default {
 </script>
 
 <style lang=less scoped>
+.mainContainer {
+  display: box;
+}
 .titleOfItems {
   text-align: 20px;
 }

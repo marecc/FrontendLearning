@@ -5,6 +5,7 @@ import routerpage from "./routerpage.vue";//vue挂载页面
 import router from './router'//路由
 import store from './store'//vuex
 
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = true
