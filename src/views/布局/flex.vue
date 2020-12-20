@@ -3,10 +3,10 @@
     <div class="boxcontainer1">
       <titleComponent :titleText="titleText"></titleComponent>
       <div class="selectGroup">
-        <selectComponent
+        <select-component
           :selectorList="selectorList"
           @commit="commitStyleChange"
-        ></selectComponent>
+        ></select-component>
       </div>
       <boxcomponent boxesName="boxes" :styleOption="styleOption"></boxcomponent>
     </div>
