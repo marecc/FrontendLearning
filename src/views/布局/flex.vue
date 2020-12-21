@@ -12,16 +12,23 @@
     </div>
     <h1>boxes</h1>
     <div>
-      <p>方块个数:</p>
-      <el-input v-model="numberOfBoxes" placeholder="请输入方块个数"></el-input>
-    </div>
-    <div class="boxcontainer2">
-      <numberedBoxComponent
-        :numberText="n"
-        v-for="n in Number(number)"
-        class="box"
-        :key="n"
-      ></numberedBoxComponent>
+      <div>
+        <p>方块个数:</p>
+        <el-input-number
+          v-model="numberOfBoxes"
+          :min="11"
+          :max="30"
+          label="请"
+        ></el-input-number>
+      </div>
+      <div class="boxcontainer2">
+        <numberedBoxComponent
+          :numberText="n"
+          v-for="n in Number(numberOfBoxes)"
+          class="box"
+          :key="n"
+        ></numberedBoxComponent>
+      </div>
     </div>
   </div>
 </template>
@@ -42,13 +49,6 @@ export default {
   created() {},
   mounted() {},
   computed: {
-    number() {
-      if (this.numberOfBoxes > 30) {
-        this.$message({message:'最大值为30！',type:'warning'});
-        this.numberOfBoxes = 30;
-      }
-      return this.numberOfBoxes;
-    },
   },
   data() {
     return {

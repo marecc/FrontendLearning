@@ -20,6 +20,11 @@
             ></el-input>
           </el-form-item>
         </div>
+        <div class="formItem">
+          <el-form-item label-width="40px">
+            <el-button style="width: 100%" size="medium">登录</el-button>
+          </el-form-item>
+        </div>
       </el-form>
     </div>
   </div>
@@ -78,9 +83,6 @@ export default {
             currentColor.b++;
           }
         }
-        console.log("current", currentColor);
-        console.log("target", targetColor);
-        // console.log("start",startColor)
         this.colorVal =
           "background:rgb(" +
           currentColor.r +
@@ -103,7 +105,7 @@ export default {
   flex-direction: column;
   align-items: center;
   .loginTable {
-    margin-top: 19%;
+    margin-top: 25%;
     height: 450px;
     width: 450px;
     .loginForm {
@@ -111,7 +113,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       .formItem {
-        padding-bottom: 5%;
+        padding-bottom: 1%;
       }
     }
   }

@@ -20,7 +20,10 @@
         <el-menu-item index="/zujian/element">element</el-menu-item>
       </el-submenu>
     </el-menu>
-    <h1 v-show="this.$router.history.current.fullPath == '/'" class="tipTitle">
+    <h1
+      v-show="this.$router.history.current.fullPath == '/buju'"
+      class="tipTitle"
+    >
       欢迎{{ userName }}👏，请在顶部下拉框中选择项目
     </h1>
     <div class="container">
@@ -41,6 +44,7 @@ export default {
   },
   created() {
     this.printConfigMessage();
+    console.log("fullPath", this.$router.history.current.fullPath);
   },
   mounted() {
     this.getMessage();
@@ -52,13 +56,18 @@ export default {
     },
     handleSelect() {
       //提交选择事件切换路由
-      console.log("fullPath", this.$router.history.current.fullPath);
+      // console.log("fullPath", this.$router.history.current.fullPath);
     },
     getMessage() {
-      api.getHelloText().then((res) => {
-        console.log(res);
-        this.userName = res.data;
-      });
+      if (this.$router.history.current.fullPath == "/buju") {
+        api.getHelloText().then((res) => {
+          console.log(res);
+          this.userName = res.data;
+        });
+      }
+      else{
+        this.userName == 'user'
+      }
     },
   },
 };
