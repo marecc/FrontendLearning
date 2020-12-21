@@ -5,7 +5,7 @@ import routerpage from "./routerpage.vue";
 import loginPage from "./views/loginPage.vue";//vue挂载页面
 import router from './router'//路由
 import store from './store'//vuex
-
+import '../theme/index.css'
 
 Vue.use(ElementUI)
 
