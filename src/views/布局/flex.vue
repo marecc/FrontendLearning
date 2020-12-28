@@ -18,7 +18,7 @@
           v-model="numberOfBoxes"
           :min="11"
           :max="30"
-          label="请"
+          label="请选择方块个数"
         ></el-input-number>
       </div>
       <div class="boxcontainer2">

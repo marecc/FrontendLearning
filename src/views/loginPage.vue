@@ -1,5 +1,6 @@
 <template style="height: 100%;">
   <div class="main" :style="colorVal">
+    <h1 class="title">FrontEndLearning</h1>
     <div class="loginTable">
       <el-form class="loginForm" :model="userForm">
         <div class="formItem">
@@ -104,8 +105,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  .title{
+    margin-top: 10%;
+    font-size: 50px;
+  }
   .loginTable {
-    margin-top: 25%;
+    margin-top: 10%;
     height: 450px;
     width: 450px;
     .loginForm {

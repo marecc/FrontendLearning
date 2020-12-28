@@ -62,7 +62,7 @@ export default {
       if (this.$router.history.current.fullPath == "/buju") {
         api.getHelloText().then((res) => {
           console.log(res);
-          this.userName = res.data;
+          this.userName = res.data.name;
         });
       }
       else{
