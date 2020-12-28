@@ -7,7 +7,12 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: "/",
-		redrict:"/buju/felx"
+		redirect:"/loginPage"
+	},
+	{
+		path: "/loginPage",
+		name: "loginPage",
+		component: () => import("../views/loginPage")
 	},
 	{
 		path: "/buju",

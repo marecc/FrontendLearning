@@ -1,24 +1,34 @@
 <template>
-  <div>
+  <div class="mainContainer">
     <div class="boxcontainer1">
       <titleComponent :titleText="titleText"></titleComponent>
       <div class="selectGroup">
-        <selectComponent
+        <select-component
           :selectorList="selectorList"
           @commit="commitStyleChange"
-        ></selectComponent>
+        ></select-component>
       </div>
       <boxcomponent boxesName="boxes" :styleOption="styleOption"></boxcomponent>
     </div>
     <h1>boxes</h1>
-
-    <div class="boxcontainer2">
-      <numberedBoxComponent
-        :numberText="n"
-        v-for="n in 15"
-        class="box"
-        :key="n"
-      ></numberedBoxComponent>
+    <div>
+      <div>
+        <p>方块个数:</p>
+        <el-input-number
+          v-model="numberOfBoxes"
+          :min="11"
+          :max="30"
+          label="请选择方块个数"
+        ></el-input-number>
+      </div>
+      <div class="boxcontainer2">
+        <numberedBoxComponent
+          :numberText="n"
+          v-for="n in Number(numberOfBoxes)"
+          class="box"
+          :key="n"
+        ></numberedBoxComponent>
+      </div>
     </div>
   </div>
 </template>
@@ -38,10 +48,12 @@ export default {
   },
   created() {},
   mounted() {},
-
+  computed: {
+  },
   data() {
     return {
       titleText: "flex布局",
+      numberOfBoxes: 15,
       selectorList: [
         //flex布局设计下拉菜单区域数据
         {
@@ -68,7 +80,6 @@ export default {
         },
       ],
       styleOption: "", //传递flex样式数据变量到组件
-      numberOfBoxes: Number,
     };
   },
   methods: {
@@ -89,6 +100,9 @@ export default {
 </script>
 
 <style lang=less scoped>
+.mainContainer {
+  display: box;
+}
 .titleOfItems {
   text-align: 20px;
 }
