@@ -2,9 +2,14 @@
   <div class="main" :style="colorVal">
     <h1 class="title">FrontEndLearning</h1>
     <div class="loginTable">
-      <el-form class="loginForm" :model="userForm">
+      <el-form
+        ref="loginForm"
+        :rules="rules"
+        class="loginForm"
+        :model="userForm"
+      >
         <div class="formItem">
-          <el-form-item label="账户" label-width="40px"
+          <el-form-item label="账户" :label-width="labelWidth" prop="userName"
             ><el-input
               size="medium"
               v-model="userForm.userName"
@@ -13,8 +18,13 @@
           ></el-form-item>
         </div>
         <div class="formItem">
-          <el-form-item label="密码" label-width="40px">
+          <el-form-item
+            label="密码"
+            :label-width="labelWidth"
+            prop="userPassword"
+          >
             <el-input
+              type="password"
               size="medium"
               v-model="userForm.userPassword"
               placeholder="请输入密码"
@@ -22,8 +32,10 @@
           </el-form-item>
         </div>
         <div class="formItem">
-          <el-form-item label-width="40px">
-            <el-button style="width: 100%" size="medium">登录</el-button>
+          <el-form-item :label-width="labelWidth">
+            <el-button @click="loginConfirm" style="width: 100%" size="medium"
+              >登录</el-button
+            >
           </el-form-item>
         </div>
       </el-form>
@@ -35,11 +47,20 @@
 export default {
   data() {
     return {
+      colorVal: "",
+      labelWidth: "55px",
       userForm: {
         userName: "",
         userPassword: "",
       },
-      colorVal: "",
+      rules: {
+        userName: [
+          { required: true, message: "请输入用户名", trigger: "blur" },
+        ],
+        userPassword: [
+          { required: true, message: "请输入密码", trigger: "blur" },
+        ],
+      },
     };
   },
   created() {
@@ -94,6 +115,22 @@ export default {
           ");";
       }, 80);
     },
+    //登录方法
+    loginConfirm() {
+      this.$refs.loginForm.validate((valid) => {
+        if (
+          valid &&
+          this.userForm.userName == "marec" &&
+          this.userForm.userPassword == "marec"
+        ) {
+          this.$router.push("buju");
+        } else {
+          if (this.userForm.userName != "" && this.userForm.userPassword != "")
+            this.$message.error("账户或密码错误");
+          return false;
+        }
+      });
+    },
   },
 };
 </script>
@@ -105,12 +142,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .title{
-    margin-top: 10%;
+  .title {
+    margin-top: 5%;
     font-size: 50px;
   }
   .loginTable {
-    margin-top: 10%;
+    margin-top: 5%;
     height: 450px;
     width: 450px;
     .loginForm {

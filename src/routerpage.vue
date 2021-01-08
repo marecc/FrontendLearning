@@ -8,6 +8,8 @@
 export default {
   created(){
     console.log(this.$router.history.current.fullPath);
+    console.log("window包许多与窗口相关的属性",window);
+    console.log("devicePixelRatio为屏幕缩放比例",devicePixelRatio);
   }
 }
 
