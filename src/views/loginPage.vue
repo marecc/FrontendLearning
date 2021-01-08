@@ -75,11 +75,11 @@ export default {
       var targetColor = { r: 30, g: 144, b: 255 };
       setInterval(() => {
         if (
+          //判断对象相等时需要具体到属性
           currentColor.r == targetColor.r &&
           currentColor.g == targetColor.g &&
           currentColor.b == targetColor.b
         ) {
-          //判断对象相等时需要具体到属性
           if (targetColor == color1) {
             targetColor = color2;
           } else {

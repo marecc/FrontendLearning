@@ -14,17 +14,27 @@
     <div>
       <div>
         <p>方块个数:</p>
+        <p>
+          css样式:display: flex; flex-wrap: wrap; align-content: space-between;
+        </p>
+        <p>
+          align-content只在多行显示为flex-wrap时有效,space-aroud两行间距更小,space-between两行间距较大
+        </p>
         <el-input-number
           v-model="numberOfBoxes"
           :min="11"
           :max="30"
           label="请选择方块个数"
         ></el-input-number>
+        <select-component
+          :selectorList="selectorListOfFlexWarp"
+          @commit="commitStyleChangeOfFlexWarp"
+        ></select-component>
       </div>
-      <div class="boxcontainer2">
+      <div class="boxcontainer2" :style="styleOptionOfFlexWarp">
         <numberedBoxComponent
-          :numberText="n"
           v-for="n in Number(numberOfBoxes)"
+          :numberText="n"
           class="box"
           :key="n"
         ></numberedBoxComponent>
@@ -48,8 +58,7 @@ export default {
   },
   created() {},
   mounted() {},
-  computed: {
-  },
+  computed: {},
   data() {
     return {
       titleText: "flex布局",
@@ -78,8 +87,17 @@ export default {
           valueOfStyleOption: "",
           options: ["flex-start", "flex-end", "center", "stretch", "baseline"],
         },
+        {},
+      ],
+      selectorListOfFlexWarp: [
+        {
+          name: "align-content",
+          valueOfStyleOption: "",
+          options: ["space-around", "space-between"],
+        },
       ],
       styleOption: "", //传递flex样式数据变量到组件
+      styleOptionOfFlexWarp: "",
     };
   },
   methods: {
@@ -94,6 +112,13 @@ export default {
         this.selectorList[2].valueOfStyleOption +
         ";";
       console.log(this.styleOption);
+    },
+    commitStyleChangeOfFlexWarp() {
+      this.styleOptionOfFlexWarp =
+        "display: flex-wrap: wrap;  align-content:" +
+        this.selectorListOfFlexWarp[0].valueOfStyleOption +
+        ";";
+      console.log(this.styleOptionOfFlexWarp);
     },
   },
 };
@@ -128,46 +153,11 @@ export default {
   flex-wrap: wrap;
   /* align-content只在多行显示为flex-wrap时有效 */
   /* space-aroud两行间距更小,space-between两行间距较大 */
-  align-content: space-around;
 }
 .boxes {
   height: 100px;
   width: 100px;
   background-color: #1abc9c;
   margin: 20px;
-}
-.box {
-  display: flex;
-}
-/* justify-content针对元素在列上的分布 */
-.box1 {
-  display: flex;
-}
-.box2 {
-  display: flex;
-  justify-content: center;
-}
-.box3 {
-  display: flex;
-  justify-content: flex-end;
-  /* end 对 justify-content无效 */
-}
-.box4 {
-  display: flex;
-  justify-content: space-around;
-}
-.box5 {
-  display: flex;
-  justify-content: space-between;
-}
-.box6 {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-/* align-items针对元素在行上的分布 */
-.box7 {
-  display: flex;
-  align-items: flex-start;
 }
 </style>
