@@ -48,6 +48,11 @@ const routes = [
 					}
 				]
 			},
+			{
+				path: "/playground",
+				name: "playground",
+				component: () => import("../views/playground.vue"),
+			},
 		]
 	},
 ];

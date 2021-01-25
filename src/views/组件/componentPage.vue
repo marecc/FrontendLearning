@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>this is component page!!</h1>
+  <div class="mainContainer">
     <router-view></router-view>
   </div>
 </template>
@@ -10,4 +9,8 @@ export default {};
 </script>
 
 <style>
+.mainContainer {
+  height: 100%;
+  width: 100%;
+}
 </style>

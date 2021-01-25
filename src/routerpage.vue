@@ -19,11 +19,13 @@ export default {
 /* 消除网页顶端及两边的空白条 */
 html,body{
   height: 100%;
+  width: 100%;
   margin: 0px;
   padding: 0px;
   background: #ecf0f1;
 }
 #app{
   height: 100%;
+  width: 100%;
 }
 </style>
