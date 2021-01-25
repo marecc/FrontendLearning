@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: "/",
-		redirect:"/loginPage"
+		redirect: "/loginPage"
 	},
 	{
 		path: "/loginPage",
@@ -15,40 +15,52 @@ const routes = [
 		component: () => import("../views/loginPage")
 	},
 	{
-		path: "/buju",
-		name: "buju",
-		component: () => import("../views/布局/buju"),
+		path: "/mainPage",
+		name: "mainPage",
+		component: () => import("../views/mainPage"),
 		children: [
 			{
-				path: "flex",
-				component: () => import("../views/布局/flex"),
+				path: "/bujuPage",
+				name: "bujuPage",
+				component: () => import("../views/布局/bujuPage"),
+				children: [
+					{
+						path: "flex",
+						component: () => import("../views/布局/flex"),
+					},
+					{
+						path: "grid",
+						component: () => import("../views/布局/grid"),
+					},
+				],
 			},
 			{
-				path: "grid",
-				component: () => import("../views/布局/grid"),
+				path: "/zujian",
+				name: "zujian",
+				// route level code-splitting
+				// this generates a separate chunk (about.[hash].js) for this route
+				// which is lazy-loaded when the route is visited.
+				component: () => import("../views/组件/componentPage"),
+				children: [
+					{
+						path: '/zujian/element',
+						component: () => import("../views/组件/element")
+					}
+				]
 			},
-		],
-	},
-	{
-		path: "/zujian",
-		name: "zujian",
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-    component: () => import("../views/组件/componentPage"),
-    children: [
-      {
-        path:'/zujian/element',
-        component: () => import("../views/组件/element")
-      }
-    ]
+			{
+				path: "/playground",
+				name: "playground",
+				component: () => import("../views/playground.vue"),
+			},
+		]
 	},
 ];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
 
 export default router

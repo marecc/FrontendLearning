@@ -7,7 +7,7 @@
       <numberedboxComponent
         v-for="n in 9"
         :key="n"
-        :numbertext="'box' + n"
+        :numberText="'box' + n"
       ></numberedboxComponent>
     </div>
     </div>

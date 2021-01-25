@@ -10,18 +10,19 @@
       active-text-color="#95a5a6"
       router
     >
-      <el-submenu index="/buju">
+      <el-submenu index="/bujuPage">
         <template slot="title">布局</template>
-        <el-menu-item index="/buju/flex">flex布局</el-menu-item>
-        <el-menu-item index="/buju/grid">grid布局</el-menu-item>
+        <el-menu-item index="/bujuPage/flex">flex布局</el-menu-item>
+        <el-menu-item index="/bujuPage/grid">grid布局</el-menu-item>
       </el-submenu>
       <el-submenu index="/zujian">
         <template slot="title">组件</template>
         <el-menu-item index="/zujian/element">element</el-menu-item>
       </el-submenu>
+      <el-menu-item index="/playground">测试页面</el-menu-item>
     </el-menu>
     <h1
-      v-show="this.$router.history.current.fullPath == '/buju'"
+      v-show="this.$router.history.current.fullPath == '/mainPage'"
       class="tipTitle"
     >
       欢迎{{ userName }}👏，请在顶部下拉框中选择项目
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import api from "../../api/api";
+import api from "../api/api";
 // import axios from "axios"
 
 export default {
@@ -45,6 +46,7 @@ export default {
   created() {
     this.printConfigMessage();
     console.log("fullPath", this.$router.history.current.fullPath);
+    console.log("fullPath", this.$router);
   },
   mounted() {
     this.getMessage();
@@ -76,6 +78,8 @@ export default {
 <style >
 /* 消除网页顶端及两边的空白条 */
 body {
+  width: 100%;
+  height: 100%;
   margin: 0px;
   padding: 0px;
   background: #ecf0f1;
@@ -84,6 +88,8 @@ body {
   padding-top: 0px;
 }
 .container {
+  /* width: 100%;
+  height: 100%; */
   padding: 2%;
   display: flex;
 }

@@ -1,6 +1,6 @@
 <template>
 <div class="box">
-    <h1 class="textOfBox"> {{ numbertext }}</h1>
+    <h1 class="textOfBox"> {{ numberText }}</h1>
 </div>
 </template>
 
@@ -8,7 +8,7 @@
 
 export default {
     name:'numberedBoxComponent',
-    props:['numbertext']
+    props:['numberText']
 }
 </script>
 
