@@ -23,6 +23,8 @@ export default {
 };
 </script>
 
+
+
 <style>
 .titleText{
   text-align: center;

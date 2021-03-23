@@ -8,7 +8,7 @@
 
 export default {
     name:'numberedBoxComponent',
-    props:['numberText']
+    props:['numberText'],
 }
 </script>
 
