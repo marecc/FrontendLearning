@@ -87,7 +87,6 @@ export default {
           valueOfStyleOption: "",
           options: ["flex-start", "flex-end", "center", "stretch", "baseline"],
         },
-        {},
       ],
       selectorListOfFlexWarp: [
         {

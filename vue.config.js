@@ -30,7 +30,7 @@ module.exports = {
 	//   --host    指定 host (默认值：0.0.0.0)
 	//   --port    指定 port (默认值：8080)
 	//   --https   使用 https (默认值：false)
-	//结束
+	//注释结束
 	configureWebpack: (config) => {
 		if (process.env.NODE_ENV === "production") {
 			// 为生产环境修改配置...

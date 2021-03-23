@@ -1,7 +1,7 @@
 import Vue from 'vue'//vue
 import ElementUI from "element-ui";//element
 // import "element-ui/lib/theme-chalk/index.css";//element
-import routerpage from "./routerpage.vue";
+import routerpage from "./routerpage.vue";//vue挂载页面
 import loginPage from "./views/loginPage.vue";//vue挂载页面
 import router from './router'//路由
 import store from './store'//vuex
@@ -15,6 +15,6 @@ const vue = new Vue({
 	router,
 	store,
 	render: (h) => h(routerpage),
-}).$mount("#app");
+}).$mount("#app");//vue挂载的节点
 
 export default vue
