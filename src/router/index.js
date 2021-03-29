@@ -21,37 +21,33 @@ const routes = [
 		children: [
 			{
 				path: "/bujuPage",
-				name: "bujuPage",
+				name: "布局",
 				component: () => import("../views/布局/bujuPage"),
 				children: [
 					{
 						path: "flex",
+						name: "flex",
 						component: () => import("../views/布局/flex"),
 					},
 					{
 						path: "grid",
+						name: "grid",
 						component: () => import("../views/布局/grid"),
 					},
 				],
 			},
 			{
-				path: "/zujian",
-				name: "zujian",
+				path: "/Basic",
+				name: "Basic",
 				// route level code-splitting
 				// this generates a separate chunk (about.[hash].js) for this route
 				// which is lazy-loaded when the route is visited.
-				component: () => import("../views/组件/componentPage"),
-				children: [
-					{
-						path: '/zujian/element',
-						component: () => import("../views/组件/element")
-					}
-				]
+				component: () => import("../views/组件/basicPage")
 			},
 			{
-				path: "/playground",
-				name: "playground",
-				component: () => import("../views/playground.vue"),
+				path: "/Form",
+				name: "Form",
+				component: () => import("../views/组件/formPage.vue"),
 			},
 		]
 	},

@@ -123,7 +123,11 @@ export default {
           this.userForm.userName == "marec" &&
           this.userForm.userPassword == "marec"
         ) {
-          this.$router.push("mainPage");
+          let loginLoading = this.$loading('loginTable')
+          setTimeout(() => {
+            loginLoading.close()
+            this.$router.push("mainPage");
+          }, 2000);
         } else {
           if (this.userForm.userName != "" && this.userForm.userPassword != "")
             this.$message.error("账户或密码错误");
