@@ -21,7 +21,7 @@
           align-content只在多行显示为flex-wrap时有效,space-aroud两行间距更小,space-between两行间距较大
         </p>
         <el-input-number
-          v-model="numberOfBoxes"
+          v-model.number="numberOfBoxes"
           :min="11"
           :max="30"
           label="请选择方块个数"
@@ -33,7 +33,7 @@
       </div>
       <div class="boxcontainer2" :style="styleOptionOfFlexWarp">
         <numberedBoxComponent
-          v-for="n in Number(numberOfBoxes)"
+          v-for="n in numberOfBoxes"
           :numberText="n"
           class="box"
           :key="n"
@@ -125,7 +125,9 @@ export default {
 
 <style lang=less scoped>
 .mainContainer {
-  display: box;
+  display: flex;
+  flex-direction: column;
+  padding: 0% 5% 0% 5%;
 }
 .titleOfItems {
   text-align: 20px;

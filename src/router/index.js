@@ -47,7 +47,7 @@ const routes = [
 			{
 				path: "/Form",
 				name: "Form",
-				component: () => import("../views/组件/formPage.vue"),
+				component: () => import("../views/组件/formExample.vue"),
 			},
 		]
 	},

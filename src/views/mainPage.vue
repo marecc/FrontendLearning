@@ -1,39 +1,32 @@
 <template>
   <div id="app" class="mainContainer">
-    <!-- <el-submenu index="/bujuPage">
-        <template slot="title">布局</template>
-        <el-menu-item index="/bujuPage/flex">flex布局</el-menu-item>
-        <el-menu-item index="/bujuPage/grid">grid布局</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="/zujian">组件</el-menu-item>
-      <el-submenu index="/basic">
-        <template slot="title">basic部分</template>
-      </el-submenu> -->
-    <el-menu
-      :default-active="this.$router.history.current.fullPath"
-      class="main-menu"
-      @select="handleSelect"
-      mode="horizontal"
-      background-color="#2c3e50"
-      text-color="#bdc3c7"
-      active-text-color="#95a5a6"
-      router
-    >
-      <routerComponent
-        v-for="(item, index) in routerList"
-        :key="index"
-        :children="item.children ? item.children : []"
-        :currentIndex="item.path"
-        :currentName="item.name"
-      ></routerComponent>
-    </el-menu>
-    <h1
-      v-show="this.$router.history.current.fullPath == '/mainPage'"
-      class="tipTitle"
-    >
-      欢迎{{ userName }}👏，请在顶部下拉框中选择项目
-    </h1>
-    <div class="container">
+    <div class="menuContainer">
+      <el-menu
+        :default-active="this.$router.history.current.fullPath"
+        class="main-menu"
+        @select="handleSelect"
+        background-color="#2c3e50"
+        text-color="#bdc3c7"
+        active-text-color="#95a5a6"
+        router
+        style="width:200px"
+      >
+        <routerComponent
+          v-for="(item, index) in routerList"
+          :key="index"
+          :children="item.children ? item.children : []"
+          :currentIndex="item.path"
+          :currentName="item.name"
+        ></routerComponent>
+      </el-menu>
+    </div>
+    <div class="viewContainer">
+      <h1
+        v-if="this.$router.history.current.fullPath == '/mainPage'"
+        class="tipTitle"
+      >
+        欢迎{{ userName }}👏，请在顶部下拉框中选择项目
+      </h1>
       <router-view></router-view>
     </div>
   </div>
@@ -97,12 +90,20 @@ body {
 }
 .mainContainer {
   padding-top: 0px;
-}
-.container {
-  /* width: 100%;
-  height: 100%; */
-  padding: 2%;
   display: flex;
+  flex-direction: row;
+}
+.menuContainer {
+  display: flex;
+}
+.viewContainer {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 1%;
+  overflow: auto;
 }
 .tipTitle {
   text-align: center;
